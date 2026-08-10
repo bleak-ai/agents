@@ -1,0 +1,117 @@
+{
+  "generated": "2026-08-10T13:13:53Z",
+  "workflows": [
+    {
+      "id": "browser-recipes",
+      "name": "Browser Recipes",
+      "description": "Explore browser actions with AI, then crystallize them into reusable Python scripts. Recipes self-heal: when a script fails, the agent falls back to live exploration and updates the recipe.\n",
+      "tags": [
+        "automation",
+        "browser"
+      ],
+      "files": [
+        "commands/run-recipe.md",
+        "commands/setup.md",
+        "index.md",
+        "recipes/index.md",
+        "runs/example/0-analysis/results.md",
+        "runs/example/1-exploration/results.md",
+        "runs/example/2-recipe/results.md",
+        "runs/example/done/info.md",
+        "runs/example/index.md",
+        "steps/0-analyze.md",
+        "steps/1-explore.md",
+        "steps/2-propose.md",
+        "steps/3-test.md",
+        "steps/index.md"
+      ]
+    },
+    {
+      "id": "release-ops",
+      "name": "Release Ops",
+      "description": "A release workflow that collects changes, drafts a changelog, bumps the version, publishes, and optionally announces. Each release is a searchable run; the workflow learns your changelog style and known blockers over time.\n",
+      "tags": [
+        "release",
+        "ops",
+        "devtools"
+      ],
+      "files": [
+        "commands/run.md",
+        "commands/setup.md",
+        "index.md",
+        "runs/example/0-parameters.md",
+        "runs/example/1-collect/results.md",
+        "runs/example/2-changelog/results.md",
+        "runs/example/3-bump/results.md",
+        "runs/example/4-publish/results.md",
+        "runs/example/done/info.md",
+        "runs/example/index.md",
+        "steps/0-preflight.md",
+        "steps/1-collect.md",
+        "steps/2-changelog.md",
+        "steps/3-bump.md",
+        "steps/4-publish.md",
+        "steps/5-announce.md",
+        "steps/5-verify-deploy.md",
+        "steps/6-announce.md",
+        "steps/index.md"
+      ]
+    },
+    {
+      "id": "seo-pipeline",
+      "name": "SEO Content Pipeline",
+      "description": "Research keywords, discover content opportunities, and build a prioritized list of content ideas. Each run explores a seed topic and produces actionable suggestions, not finished articles.\n",
+      "tags": [
+        "seo",
+        "content"
+      ],
+      "files": [
+        "commands/setup.md",
+        "index.md",
+        "insights/index.md",
+        "runs/example/0-research/results.md",
+        "runs/example/1-clusters/results.md",
+        "runs/example/2-evaluation/results.md",
+        "runs/example/3-suggestions/results.md",
+        "runs/example/done/info.md",
+        "runs/example/index.md",
+        "steps/0-research.md",
+        "steps/1-cluster.md",
+        "steps/2-evaluate.md",
+        "steps/3-suggest.md",
+        "steps/index.md"
+      ]
+    },
+    {
+      "id": "support-ops",
+      "name": "Support Ops",
+      "description": "A support workflow that resolves tickets, logs every action, and builds playbooks from experience. Each resolved ticket becomes a searchable record; repeated patterns become reusable playbooks the agent consults on future tickets.\n",
+      "tags": [
+        "support",
+        "ops"
+      ],
+      "files": [
+        "commands/setup.md",
+        "commands/support-task.md",
+        "index.md",
+        "playbooks/_index.md",
+        "playbooks/export-member-list.md",
+        "playbooks/swap-subscription.md",
+        "runs/example/0-parameters.md",
+        "runs/example/1-intake/results.md",
+        "runs/example/2-plan/results.md",
+        "runs/example/3-execution-log/results.md",
+        "runs/example/4-outcome/results.md",
+        "runs/example/done/info.md",
+        "runs/example/index.md",
+        "steps/0-intake.md",
+        "steps/1-plan.md",
+        "steps/2-execute.md",
+        "steps/3-log.md",
+        "steps/4-learn.md",
+        "steps/5-close.md",
+        "steps/index.md"
+      ]
+    }
+  ]
+}
