@@ -5,4 +5,5 @@
 2. [Changelog](2-changelog.md): draft a changelog entry from the collected changes.
 3. [Bump](3-bump.md): propose and apply the version bump. Wait for approval.
 4. [Publish](4-publish.md): tag, push, and publish to the registry. Skipped if no registry.
-5. [Announce](5-announce.md): post release notes to notification sink. Skipped if not configured.
+5. [Verify Deploy](5-verify-deploy.md): confirm the deploy succeeded and the service is live. Skipped if no deploy target.
+6. [Announce](6-announce.md): post release notes to notification sink. Skipped if not configured.
