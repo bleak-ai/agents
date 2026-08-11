@@ -2,7 +2,7 @@
 id: support-ops
 name: Support Ops
 description: >
-  A support workflow that resolves tickets, logs every action, and builds
+  A support agent that resolves tickets, logs every action, and builds
   playbooks from experience. Each resolved ticket becomes a searchable record;
   repeated patterns become reusable playbooks the agent consults on future tickets.
 parameters:
@@ -12,9 +12,14 @@ parameters:
 connections:
   - kind: ticket-tracker
     description: The issue tracker where support tickets live (Linear, Jira, GitHub Issues, or similar)
+    examples: [Linear, Jira, GitHub Issues]
   - kind: product-api
     description: The product's own API or database, for executing fixes (one or more services the team operates on)
+    examples: [Stripe, Shopify Admin API, internal REST API]
 tags: [support, ops]
+learns: >
+  This agent builds playbooks from recurring ticket patterns and keeps a
+  searchable history of every ticket it resolves.
 ---
 
 Resolve support tickets with a repeatable six-step procedure. Each run takes one ticket from intake to close, logs every operation performed, and feeds what was learned back into playbooks for future tickets.
@@ -25,7 +30,7 @@ Run folders are named by ticket: `{ticket-id}-{slug}` where the slug is a short 
 
 ## How it learns
 
-The workflow accumulates knowledge in two ways:
+The agent accumulates knowledge in two ways:
 
 1. **Playbooks** (`playbooks/`): generalized procedures for recurring issue types. Step 1 (plan) consults them; step 4 (learn) creates or updates them. A new install starts with two example playbooks to show the format. Real playbooks grow from the team's own ticket history.
 

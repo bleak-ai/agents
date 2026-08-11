@@ -1,12 +1,12 @@
-# gcontext workflow registry
+# gcontext agent registry
 
-This repo is the public registry of workflow templates for [gcontext](https://github.com/bleak-ai/gcontext).
+This repo is the public registry of agent templates for [gcontext](https://github.com/bleak-ai/gcontext).
 Each top-level folder is one template. The folder name is the template id.
 
 ## Install a template
 
 ```
-gcontext add <id>
+gcontext add <agent-id>
 ```
 
 For example: `gcontext add release-ops`
@@ -17,7 +17,7 @@ Any public GitHub repo subfolder also works:
 gcontext add https://github.com/yourorg/yourrepo/tree/main/my-template
 ```
 
-## Available templates
+## Available agents
 
 | Id | Description |
 |----|-------------|
@@ -26,7 +26,7 @@ gcontext add https://github.com/yourorg/yourrepo/tree/main/my-template
 | `seo-pipeline` | Research keywords and build a prioritized list of content ideas |
 | `support-ops` | Resolve tickets, log actions, and build playbooks from experience |
 
-## Submit a template
+## Submit an agent
 
 Open a PR that adds exactly one new folder.
 
@@ -37,6 +37,6 @@ Requirements:
 
 A maintainer reviews and merges.
 
-## Template spec
+## Agent spec
 
-See the full template specification: <https://github.com/bleak-ai/gcontext/blob/main/docs/workflows.md>
+See the full template specification: <https://github.com/bleak-ai/gcontext/blob/main/docs/agents.md>

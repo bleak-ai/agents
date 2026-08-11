@@ -4,7 +4,7 @@ description: Connect your keyword research source and verify access.
 
 # Setup
 
-Read this workflow's `index.md` and `steps/index.md` first to understand what the SEO pipeline does and what it needs.
+Read this agent's `index.md` and `steps/index.md` first to understand what the SEO pipeline does and what it needs.
 
 ## 1. Connect the keyword source
 
@@ -12,7 +12,7 @@ Ask the user which keyword research tool they use (Google Search Console, Ahrefs
 
 ## 2. Understand the user's site
 
-Ask the user about their site or niche. This context is necessary for intent matching in step 2 (evaluate). Record a short summary of the site's topic and audience in this workflow's `index.md` body or a config note.
+Ask the user about their site or niche. This context is necessary for intent matching in step 2 (evaluate). Record a short summary of the site's topic and audience in this agent's `index.md` body or a config note.
 
 ## 3. Smoke test
 

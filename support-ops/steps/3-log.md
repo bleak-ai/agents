@@ -26,7 +26,7 @@ The run folder `runs/{ticket-id}-{slug}/` with:
    - **Human steps**: any manual actions performed outside the agent (or "None").
    - **Verification**: how the fix was confirmed.
 2. Write `index.md` for the run folder: ticket ID, category, date, one-line outcome, and a per-step status table (all steps should show "done" or "skipped").
-3. No human approval needed for this step; it only writes to the workflow's own files.
+3. No human approval needed for this step; it only writes to the agent's own files.
 
 ## Done when
 
