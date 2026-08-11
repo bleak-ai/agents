@@ -7,7 +7,7 @@ description: >
   run; the agent learns your changelog style and known blockers over time.
 parameters:
   - name: version
-    description: Target version (e.g. "0.5.0") or omit for agent proposal based on changes
+    description: Target version (e.g. "0.5.0"). Omit it and the agent proposes one from the collected changes.
     required: false
   - name: scope
     description: Limit to a specific package in a monorepo (e.g. "@acme/core")
@@ -24,7 +24,7 @@ connections:
     examples: [Coolify, Vercel, Netlify]
   - kind: notification-sink
     description: Where to post release announcements (Slack, Discord, email, or similar). Optional; skip if not needed.
-    examples: [Slack, Discord, email]
+    examples: [Slack, Discord, Microsoft Teams]
 tags: [release, ops, devtools]
 learns: >
   This agent records your changelog style, known blockers, and workarounds,
@@ -49,7 +49,7 @@ The agent accumulates knowledge in two ways:
 
 ## Files
 
-- [index.md](index.md) - this file, module entry point
+- [index.md](index.md) - this file, agent entry point
 - [steps/index.md](steps/index.md) - the seven release steps (0-preflight through 6-announce)
 - [commands/](commands/) - user-invokable slash commands (setup, run)
 - [runs/](runs/) - one folder per release run

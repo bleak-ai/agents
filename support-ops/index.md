@@ -15,7 +15,7 @@ connections:
     examples: [Linear, Jira, GitHub Issues]
   - kind: product-api
     description: The product's own API or database, for executing fixes (one or more services the team operates on)
-    examples: [Stripe, Shopify Admin API, internal REST API]
+    examples: [Stripe, Shopify, Supabase]
 tags: [support, ops]
 learns: >
   This agent builds playbooks from recurring ticket patterns and keeps a

@@ -15,8 +15,8 @@ connections:
     examples: [Chrome CDP, Playwright, Selenium]
 tags: [automation, browser]
 learns: >
-  This agent accumulates browser recipes: reusable scripts for actions it has
-  performed before.
+  This agent saves every browser action as a reusable Python script. When a
+  site changes and a script breaks, it re-explores and replaces the recipe.
 ---
 
 Turn a plain-language browser action into a reusable Python script. The agent explores the target site with AI-driven browser control, records every step, and produces a parameterized recipe. On future runs, the recipe executes directly (fast, no AI needed). If a recipe fails, the agent re-explores and updates it automatically.
