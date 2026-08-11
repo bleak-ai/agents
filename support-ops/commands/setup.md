@@ -4,7 +4,7 @@ description: Set up support-ops for your team. Maps your ticket tracker and prod
 
 # Setup
 
-Read this workflow's `index.md` and `steps/index.md` first to understand what support-ops does and what it needs.
+Read this agent's `index.md` and `steps/index.md` first to understand what support-ops does and what it needs.
 
 ## 1. Bind the ticket tracker
 

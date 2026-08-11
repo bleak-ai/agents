@@ -1,6 +1,6 @@
 {
-  "generated": "2026-08-10T13:13:53Z",
-  "workflows": [
+  "generated": "2026-08-11T23:03:41Z",
+  "agents": [
     {
       "id": "browser-recipes",
       "name": "Browser Recipes",
@@ -29,7 +29,7 @@
     {
       "id": "release-ops",
       "name": "Release Ops",
-      "description": "A release workflow that collects changes, drafts a changelog, bumps the version, publishes, and optionally announces. Each release is a searchable run; the workflow learns your changelog style and known blockers over time.\n",
+      "description": "A release agent that collects changes, drafts a changelog, bumps the version, publishes, and optionally announces. Each release is a searchable run; the agent learns your changelog style and known blockers over time.\n",
       "tags": [
         "release",
         "ops",
@@ -85,7 +85,7 @@
     {
       "id": "support-ops",
       "name": "Support Ops",
-      "description": "A support workflow that resolves tickets, logs every action, and builds playbooks from experience. Each resolved ticket becomes a searchable record; repeated patterns become reusable playbooks the agent consults on future tickets.\n",
+      "description": "A support agent that resolves tickets, logs every action, and builds playbooks from experience. Each resolved ticket becomes a searchable record; repeated patterns become reusable playbooks the agent consults on future tickets.\n",
       "tags": [
         "support",
         "ops"

@@ -8,7 +8,7 @@ parameters:
 
 # Support Task
 
-Read this workflow's `index.md` and `steps/index.md` to load the full procedure.
+Read this agent's `index.md` and `steps/index.md` to load the full procedure.
 
 Resolve the ticket `$ticket` by executing steps 0 through 5 in order:
 

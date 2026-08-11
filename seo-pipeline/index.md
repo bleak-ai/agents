@@ -15,7 +15,11 @@ parameters:
 connections:
   - kind: keyword-source
     description: A keyword research tool or data source (Google Search Console, Ahrefs, Semrush, or similar)
+    examples: [Google Search Console, Ahrefs, Semrush]
 tags: [seo, content]
+learns: >
+  This agent accumulates insights about keyword landscapes across runs, so it
+  can avoid saturated niches and spot recurring opportunities over time.
 ---
 
 Research keywords for a seed topic, cluster them by intent, evaluate opportunities, and produce a prioritized list of content ideas. Each run delivers suggestions for what to build, not finished content.
@@ -29,7 +33,7 @@ Run folders are named with a kebab-case slug derived from the seed: `{slug}` (e.
 
 ## How it learns
 
-The workflow accumulates cross-run findings in `insights/`:
+The agent accumulates cross-run findings in `insights/`:
 
 1. **Insights** (`insights/index.md`): dated entries about keyword landscapes. Step 2 (evaluate) reads them before scoring clusters. Step 3 (suggest) updates them with new findings. Over time, insights help the agent avoid saturated niches and spot recurring opportunities.
 
