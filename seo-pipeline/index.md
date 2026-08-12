@@ -12,6 +12,12 @@ parameters:
   - name: scope
     description: '"narrow" for a focused list around one niche, "broad" for cluster discovery across the seed topic'
     required: true
+flow:
+  - Give the agent a seed topic and a scope
+  - It pulls keyword data and groups it into clusters
+  - Each cluster is scored for opportunity
+  - You get a prioritized list of content ideas
+  - Findings carry over to the next run
 connections:
   - kind: keyword-source
     description: A keyword research tool or data source (Google Search Console, Ahrefs, Semrush, or similar)
