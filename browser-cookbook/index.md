@@ -18,7 +18,7 @@ flow:
   - Broken recipes diagnose and heal themselves (3 attempts, then report)
 connections:
   - kind: browser
-    description: Playwright attached over CDP to the user's real Chrome (debug port, normal profile)
+    description: Playwright attached over CDP to a Chrome instance the user chooses (daily profile or a dedicated one; roster with a default recorded in the connection)
     examples: [Chrome CDP via Playwright]
 tags: [automation, browser]
 learns: >
