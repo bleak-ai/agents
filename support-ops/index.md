@@ -9,6 +9,12 @@ parameters:
   - name: ticket-id
     description: The ticket to resolve (e.g. "TICKET-42") or "next" to pull the top item from the queue
     required: true
+flow:
+  - Hand the agent a ticket, or say "next" to pull the top of the queue
+  - Approve the plan it proposes
+  - Watch it execute, approving each write action
+  - It logs the run and closes the ticket
+  - Recurring patterns become playbooks it reuses on future tickets
 connections:
   - kind: ticket-tracker
     description: The issue tracker where support tickets live (Linear, Jira, GitHub Issues, or similar)

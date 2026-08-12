@@ -1,5 +1,5 @@
 {
-  "generated": "2026-08-11T23:03:41Z",
+  "generated": "2026-08-12T16:57:32Z",
   "agents": [
     {
       "id": "browser-recipes",
@@ -11,7 +11,6 @@
       ],
       "files": [
         "commands/run-recipe.md",
-        "commands/setup.md",
         "index.md",
         "recipes/index.md",
         "runs/example/0-analysis/results.md",
@@ -95,8 +94,8 @@
         "commands/support-task.md",
         "index.md",
         "playbooks/_index.md",
-        "playbooks/export-member-list.md",
-        "playbooks/swap-subscription.md",
+        "playbooks/example-export-member-list.md",
+        "playbooks/example-swap-subscription.md",
         "runs/example/0-parameters.md",
         "runs/example/1-intake/results.md",
         "runs/example/2-plan/results.md",

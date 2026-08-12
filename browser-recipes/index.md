@@ -9,6 +9,12 @@ parameters:
   - name: action
     description: What to do, in plain words (e.g. "export the monthly report from the admin dashboard")
     required: true
+flow:
+  - Describe a browser action in plain words
+  - The agent reuses a saved recipe when one matches
+  - Otherwise it explores the site live and records every step
+  - A tested script is saved for next time
+  - Broken recipes are re-explored and replaced
 connections:
   - kind: browser
     description: A browser automation interface (Chrome CDP, Playwright, or similar)

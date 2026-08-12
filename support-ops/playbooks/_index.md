@@ -23,5 +23,5 @@ This section maps generic playbook references to the actual connections in this 
 
 ## Index
 
-- [swap-subscription.md](swap-subscription.md): transfer a subscription between two customer accounts.
-- [export-member-list.md](export-member-list.md): export a list of active members for a given account or group.
+- [example-swap-subscription.md](example-swap-subscription.md): transfer a subscription between two customer accounts.
+- [example-export-member-list.md](example-export-member-list.md): export a list of active members for a given account or group.

@@ -1,6 +1,6 @@
 # Plan: HELP-307
 
-- **Playbook**: swap-subscription.md (exact match on category)
+- **Playbook**: example-swap-subscription.md (exact match on category)
 
 ## Steps
 
