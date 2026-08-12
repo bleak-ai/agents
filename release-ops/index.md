@@ -12,6 +12,12 @@ parameters:
   - name: scope
     description: Limit to a specific package in a monorepo (e.g. "@acme/core")
     required: false
+flow:
+  - Ask for a release, with or without a target version
+  - The agent gathers the changes and drafts the changelog
+  - Approve the version bump
+  - It tags, publishes, and checks the deploy
+  - Release notes go out where you chose
 connections:
   - kind: source-control
     description: The git host where the repository lives (GitHub, GitLab, or similar)
