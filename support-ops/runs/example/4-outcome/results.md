@@ -19,4 +19,4 @@ Both accounts re-fetched after the swap. Elena's account shows no active subscri
 
 ## Playbook reference
 
-Used: swap-subscription.md. Execution matched the playbook exactly. No playbook update needed.
+Used: example-swap-subscription.md. Execution matched the playbook exactly. No playbook update needed.
