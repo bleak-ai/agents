@@ -1,16 +1,19 @@
 {
-  "generated": "2026-08-12T16:57:32Z",
+  "generated": "2026-08-12T22:48:54Z",
   "agents": [
     {
-      "id": "browser-recipes",
-      "name": "Browser Recipes",
-      "description": "Explore browser actions with AI, then crystallize them into reusable Python scripts. Recipes self-heal: when a script fails, the agent falls back to live exploration and updates the recipe.\n",
+      "id": "browser-cookbook",
+      "name": "Browser Cookbook",
+      "description": "A browser agent that learns your sites. It performs browser tasks through your real Chrome, accumulates per-site knowledge, and crystallizes repetitive tasks into plain Python scripts that run without AI. Broken knowledge heals itself; blockers like captchas escalate to you.\n",
       "tags": [
         "automation",
         "browser"
       ],
       "files": [
-        "commands/run-recipe.md",
+        "commands/run_create_cookbook.md",
+        "commands/run_once.md",
+        "commands/run_recipe.md",
+        "commands/setup.md",
         "index.md",
         "recipes/index.md",
         "runs/example/0-analysis/results.md",
@@ -18,6 +21,7 @@
         "runs/example/2-recipe/results.md",
         "runs/example/done/info.md",
         "runs/example/index.md",
+        "sites/index.md",
         "steps/0-analyze.md",
         "steps/1-explore.md",
         "steps/2-propose.md",

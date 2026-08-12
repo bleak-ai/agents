@@ -21,7 +21,7 @@ gcontext add https://github.com/yourorg/yourrepo/tree/main/my-agent
 
 | Id | Description |
 |----|-------------|
-| `browser-recipes` | Explore browser actions with AI, then crystallize them into reusable scripts |
+| `browser-cookbook` | Learn your sites, crystallize repetitive browser tasks into scripts that self-heal |
 | `release-ops` | Collect changes, draft a changelog, bump the version, publish, and announce |
 | `seo-pipeline` | Research keywords and build a prioritized list of content ideas |
 | `support-ops` | Resolve tickets, log actions, and build playbooks from experience |
