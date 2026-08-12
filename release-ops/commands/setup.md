@@ -4,7 +4,7 @@ description: Set up release-ops for your project. Maps your source control, regi
 
 # Setup
 
-Read this workflow's `index.md` and `steps/index.md` first to understand what release-ops does and what it needs.
+Read this agent's `index.md` and `steps/index.md` first to understand what release-ops does and what it needs.
 
 ## 1. Detect the project stack
 

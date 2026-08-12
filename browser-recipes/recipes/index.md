@@ -6,4 +6,4 @@ The agent consults this index during step 0 (analyze) to find existing recipes. 
 
 ## Index
 
-_(no recipes yet, they are created as the workflow runs)_
+_(no recipes yet, they are created as the agent runs)_

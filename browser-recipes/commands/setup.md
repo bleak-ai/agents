@@ -4,7 +4,7 @@ description: Connect your browser automation interface and verify access.
 
 # Setup
 
-Read this workflow's `index.md` and `steps/index.md` first to understand what browser-recipes does and what it needs.
+Read this agent's `index.md` and `steps/index.md` first to understand what browser-recipes does and what it needs.
 
 ## 1. Identify the browser automation
 

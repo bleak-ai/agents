@@ -13,7 +13,7 @@ parameters:
 
 Read these files before doing anything:
 
-1. This workflow's `index.md` (the manifest, scopes table, run naming scheme).
+1. This agent's `index.md` (the manifest, scopes table, run naming scheme).
 2. `steps/index.md` (the step map).
 3. `runs/example/` (what a correct run looks like, folder by folder).
 4. `releases/insights.md` (learned patterns, known issues).
