@@ -10,8 +10,8 @@ The task description; `recipes/index.md`; `sites/<domain>/` if present.
 
 ## Output
 
-- `runs/{slug}/index.md`: target, goal, and a status line.
-- `runs/{slug}/0-analysis/results.md` with:
+- `runs/{date}-{slug}/index.md`: target, goal, and a status line.
+- `runs/{date}-{slug}/0-analysis/results.md` with:
   - **Target**: URL or app.
   - **Goal**: one sentence.
   - **Success definition**: how to verify it worked (a file exists, a value changed, n items found).
@@ -21,11 +21,11 @@ The task description; `recipes/index.md`; `sites/<domain>/` if present.
 ## How to execute
 
 1. Parse the task. If the target is unclear, ask the user.
-2. Derive the kebab-case slug for the run folder.
-3. Create `runs/{slug}/index.md` with the target, the goal, and a status line. Keep the status updated as steps complete.
-4. Check `recipes/index.md` for a matching recipe. If one matches, tell the user and suggest `run_recipe`. Stop here if they agree.
+2. Derive the kebab-case slug (two or three short words: it becomes the recipe name and its slash command). The run folder is `runs/<YYYY-MM-DD>-<slug>/` per `style.md`.
+3. Create `runs/{date}-{slug}/index.md` with the target, the goal, and a status line. Keep the status updated as steps complete.
+4. Check `recipes/index.md` for a matching recipe. If one matches, offer it through the question tool (run the recipe / continue). Running it means: read `commands/run_recipe.md` and follow it, skipping its lookup step. Stop here if they agree.
 5. Read `sites/<domain>/index.md` if it exists. Note which blocks and lib helpers apply.
-6. Write the analysis file and present it briefly.
+6. Write the analysis file. Present target, goal, success definition as three short lines; confirm through the question tool (correct / adjust).
 
 ## Done when
 

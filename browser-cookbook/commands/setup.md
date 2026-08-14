@@ -4,12 +4,14 @@ description: Set up browser-cookbook. Chooses the Chrome instance the agent uses
 
 Read this agent's `index.md` and `steps/index.md` first.
 
+Follow `style.md` for questions and printed commands; setup is conversational, the status-line vocabulary does not apply here.
+
 ## 1. Choose the browser instance
 
 The agent drives Chrome over a debug port. A machine can run several Chrome instances (different profiles or user-data-dirs). The user decides which one the agent uses by default; a run can name a different one when needed.
 
 1. Discover candidates with an ad-hoc script: probe ports 9222-9225 with HTTP GET `/json/version`, and list running Chrome processes with their `--user-data-dir` and `--remote-debugging-port` flags.
-2. Ask ONE question: which instance should the agent use by default? Offer the discovered instances plus "a new dedicated one". State the consequences inside the options, plainly:
+2. Ask ONE question through the client's structured question tool: which instance should the agent use by default? Offer the discovered instances plus "a new dedicated one". State the consequences inside the options, plainly:
    - Daily profile: logins already exist, but the agent acts under the user's own accounts, the debug port lets any local process drive that logged-in browser, and the window is busy while the agent works.
    - Dedicated instance: the user keeps working in their own Chrome in parallel and the exposure is limited to that instance, but each site needs one manual login the first time.
 3. If the user picks a new dedicated instance, create it: start Chrome detached with its own `--user-data-dir` (a folder outside the agent state, e.g. `~/.browser-cookbook/chrome`) and a free debug port.
@@ -28,6 +30,8 @@ Never ask the user about environment state a probe can answer; check it, and fix
 ## 3. Explain the knowledge layout
 
 Tell the user, in plain words: the agent keeps notes per site in `sites/` and saved recipes in `recipes/`; both start empty and fill through use. Point at the example run as a sample.
+
+One client tip: register this MCP server under a short alias (for example `bc`); commands then read `/mcp__bc__browse`. Command names are short (no module prefix, except names the framework reserves, like this setup command, which keeps the module prefix), so with a short alias every daily command, including per-recipe ones, stays easy to find in the picker. In Claude Code: `claude mcp remove <long-name>` then `claude mcp add <short-name> --transport http <url>`.
 
 ## What setup creates
 

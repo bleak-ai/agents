@@ -4,7 +4,7 @@
 - **Goal**: download the full contact list as a CSV file.
 - **Status**: done.
 
-A fabricated sample showing the full run_create_cookbook flow on an invented site (`app.acme-crm.test`). Your real runs will appear next to it.
+A fabricated sample showing the full new_recipe flow on an invented site (`app.acme-crm.test`). Your real runs will appear next to it.
 
 - `0-analysis/results.md`: target, goal, success definition.
 - `1-exploration/results.md`: recorded action sequence.

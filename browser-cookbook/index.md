@@ -4,7 +4,8 @@ name: Browser Cookbook
 description: >
   A browser agent that learns your sites. It performs browser tasks through
   your real Chrome, accumulates per-site knowledge, and crystallizes
-  repetitive tasks into plain Python scripts that run without AI. Broken
+  repetitive tasks into plain Python scripts; on later runs the AI only
+  dispatches the script and heals failures. Broken
   knowledge heals itself; blockers like captchas escalate to you.
 parameters:
   - name: task
@@ -14,8 +15,9 @@ flow:
   - Describe a browser task in plain words
   - The agent reuses a saved recipe when one matches
   - Known sites run warm from accumulated site notes
-  - run_once performs without saving a recipe; run_create_cookbook crystallizes one
-  - Broken recipes diagnose and heal themselves (3 attempts, then report)
+  - browse performs without saving a recipe; new_recipe crystallizes one; save_recipe promotes the last browse into a recipe
+  - Every saved recipe is its own slash command; type /recipe in the picker to see them all
+  - Broken recipes diagnose and heal themselves (3 heal attempts, then report)
 connections:
   - kind: browser
     description: Playwright attached over CDP to a Chrome instance the user chooses (daily profile or a dedicated one; roster with a default recorded in the connection)
@@ -28,19 +30,23 @@ learns: >
   default outcome and skipping it needs a written justification.
 ---
 
-Turn browser work into accumulated knowledge. The agent drives your real Chrome (your logins persist), records what it learns about each site, and turns repetitive tasks into parameterized Python scripts that replay in seconds without AI.
+Turn browser work into accumulated knowledge. The agent drives your real Chrome (your logins persist), records what it learns about each site, and turns repetitive tasks into parameterized Python scripts that replay in seconds; the AI only launches the script and steps in when it breaks.
 
 Token economy is a design goal: AI time is spent only where judgment is needed. Deterministic parts (login, navigation, extraction) live in per-site Python helpers even when the task itself stays AI-driven.
 
 ## Entry points
 
-- `run_once`: do the task, no recipe. Site knowledge still updates.
-- `run_create_cookbook`: do the task and crystallize a recipe (full explore, verdict, save flow).
+All messaging follows `style.md`: fixed status lines, prose only at proposal, blocker, result.
+
+- `browse`: do the task, no recipe. Site knowledge still updates.
+- `new_recipe`: do the task and crystallize a recipe (full explore, verdict, save flow).
+- `save_recipe`: promote the most recent browse run into a recipe without re-exploring.
 - `run_recipe`: execute a saved recipe by name; heals itself on failure.
+- `recipe_<name>`: one slash command per saved recipe, invoked as `/mcp__<alias>__recipe_<name>`; mechanism documented in `recipes/index.md`.
 
 ## The script verdict
 
-After every `run_create_cookbook` exploration the agent writes a verdict into the recipe: script candidate or not, with the reason. The default is yes; NOT scripting must be justified (content-dependent branching, layout instability, anti-bot pressure).
+After every `new_recipe` exploration the agent writes a verdict into the recipe: script candidate or not, with the reason. The default is yes; NOT scripting must be justified (content-dependent branching, layout instability, anti-bot pressure).
 
 ## Blockers
 
@@ -48,4 +54,4 @@ Captcha, unexpected 2FA, strange modal: the agent pauses and asks in the session
 
 ## Run naming
 
-Each run folder is named with a kebab-case slug derived from the task description, decided during step 0 (analyze).
+Each run folder is `runs/<YYYY-MM-DD>-<slug>/`, slug decided in step 0. Unpromoted runs older than 7 days are deleted at the start of any command (rule in `style.md`).

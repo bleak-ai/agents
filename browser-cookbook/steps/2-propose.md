@@ -10,11 +10,11 @@ The exploration log from step 1; the site notes.
 
 ## Output
 
-`runs/{slug}/2-recipe/results.md` with:
+`runs/{date}-{slug}/2-recipe/results.md` with:
 
 - **Recipe name**: kebab-case.
 - **Script verdict**: `script: yes` or `script: no`, followed by the reason. The default is yes. A no must name the concrete obstacle: content-dependent branching, unstable layout, anti-bot pressure. This verdict is copied into the recipe's index.md in step 3.
-- **Parameters**: name, type, description, default for each.
+- **Parameters**: name, type, description, default for each. Give a default whenever a sensible standing value exists; a default makes the recipe's slash command runnable with zero typing.
 - **Read-only or mutating**: from step 0, confirmed against what exploration showed.
 - For `script: yes` - **Script**: full Python source. For `script: no` - **Playbook**: the ordered instructions the AI follows on future runs, referencing site blocks, plus which deterministic stretches go into `lib.py`.
 - **Test plan**: input values and expected result.
@@ -40,4 +40,4 @@ def load_site_lib(domain):
 
 ## Done when
 
-The user has approved the recipe proposal.
+The user approved the proposal through the question tool (approve / change parameters / flip the script verdict / cancel). The proposal itself is one of the three prose points allowed by `style.md`; keep it complete.
