@@ -10,19 +10,26 @@ The approved recipe proposal from step 2; the browser connection.
 
 ## Output
 
-- On success: `recipes/{name}/index.md`, `recipes/{name}/script.py` when the verdict is yes, updated `recipes/index.md`, and `runs/{slug}/done/info.md`.
+- On success: `recipes/{name}/index.md`, `recipes/{name}/script.py` when the verdict is yes, updated `recipes/index.md`, and `runs/{date}-{slug}/done/info.md`.
 - On failure: the diagnosis recorded in the run folder.
 
 ## How to execute
 
-1. Run the script (via run_script with the test-plan args) or walk the playbook once.
+1. For a script verdict: write `recipes/{name}/script.py` first, then run it via run_script with the test-plan args. If the test finally fails, remove the file with an ad-hoc script so no unproven recipe remains. For a playbook: walk it once.
 2. Verify against the success definition.
-3. On success, write the recipe folder:
-   - `recipes/{name}/index.md`: goal, parameters, success definition, script verdict with reason, read-only or mutating flag, source site, blocks used, source run slug, creation date.
-   - `recipes/{name}/script.py` when the verdict is yes.
-   - Update `recipes/index.md` and, if helpers were added, `sites/<domain>/lib.py` and the site index.
-   - Write `runs/{slug}/done/info.md`: what was achieved, what was learned.
-4. On failure: this is the healing path. Diagnose (transient, site changed, blocker), fix the responsible file, re-run. Budget: 3 attempts, then stop and report. Blockers escalate immediately.
+3. On success, complete the recipe folder (for a script verdict, `script.py` already exists from step 1):
+   - `recipes/{name}/index.md`: starts with a `---` YAML frontmatter block holding `description` (one line, shown next to the recipe's slash command in the client) and `parameters` (list of `name`, `description`, `required`, and `default` where the proposal gave one; a default makes the argument optional in the picker). After the frontmatter, the prose: goal, success definition, script verdict with reason, read-only or mutating flag, source site, blocks used, source run slug, creation date.
+   - Update `recipes/index.md` with the recipe's line in the Index format stated there, and, if helpers were added, `sites/<domain>/lib.py` and the site index.
+   - Write `runs/{date}-{slug}/done/info.md`: what was achieved, what was learned.
+   - End the final report with this handoff block, filled in (values are the test-plan args that just proved the recipe; `<alias>` is derived per `style.md`):
+
+     ```
+     Recipe saved: {name}
+     Run it again: /mcp__<alias>__recipe_{name_with_underscores}   {param}: {value used in the test}
+       (new commands appear after a /mcp reconnect; until then: /mcp__<alias>__run_recipe {name})
+     All recipes: type /recipe in the picker, or read recipes/index.md
+     ```
+4. On failure: this is the healing path. Diagnose (transient, site changed, blocker), fix the responsible file, re-run. Budget: 3 heal attempts, then stop and report. Blockers escalate immediately.
 
 ## Done when
 
