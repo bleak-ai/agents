@@ -15,7 +15,7 @@ The approved recipe proposal from step 2; the browser connection.
 
 ## How to execute
 
-1. For a script verdict: write `recipes/{name}/script.py` first, then run it via run_script with the test-plan args. If the test finally fails, remove the file with an ad-hoc script so no unproven recipe remains. For a playbook: walk it once.
+1. For a script verdict: write `recipes/{name}/script.py` first, then run it via run_script with the test-plan args. The script takes its parameters as positional CLI args, in the order the recipe frontmatter declares them; the generated recipe command relies on this order. If the test finally fails, remove the file with an ad-hoc script so no unproven recipe remains. For a playbook: walk it once.
 2. Verify against the success definition.
 3. On success, complete the recipe folder (for a script verdict, `script.py` already exists from step 1):
    - `recipes/{name}/index.md`: starts with a `---` YAML frontmatter block holding `description` (one line, shown next to the recipe's slash command in the client) and `parameters` (list of `name`, `description`, `required`, and `default` where the proposal gave one; a default makes the argument optional in the picker). After the frontmatter, the prose: goal, success definition, script verdict with reason, read-only or mutating flag, source site, blocks used, source run slug, creation date.
@@ -25,8 +25,9 @@ The approved recipe proposal from step 2; the browser connection.
 
      ```
      Recipe saved: {name}
-     Run it again: /mcp__<alias>__recipe_{name_with_underscores}   {param}: {value used in the test}
-       (new commands appear after a /mcp reconnect; until then: /mcp__<alias>__run_recipe {name})
+     Next: type /mcp in your client to reconnect. The new command then appears in the picker.
+     Run it: /mcp__<alias>__recipe_{name_with_underscores}   {param}: {value used in the test}
+     Before you reconnect, use: /mcp__<alias>__run_recipe {name}
      All recipes: type /recipe in the picker, or read recipes/index.md
      ```
 4. On failure: this is the healing path. Diagnose (transient, site changed, blocker), fix the responsible file, re-run. Budget: 3 heal attempts, then stop and report. Blockers escalate immediately.

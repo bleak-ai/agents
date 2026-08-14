@@ -14,8 +14,12 @@ The agent drives Chrome over a debug port. A machine can run several Chrome inst
 2. Ask ONE question through the client's structured question tool: which instance should the agent use by default? Offer the discovered instances plus "a new dedicated one". State the consequences inside the options, plainly:
    - Daily profile: logins already exist, but the agent acts under the user's own accounts, the debug port lets any local process drive that logged-in browser, and the window is busy while the agent works.
    - Dedicated instance: the user keeps working in their own Chrome in parallel and the exposure is limited to that instance, but each site needs one manual login the first time.
-3. If the user picks a new dedicated instance, create it: start Chrome detached with its own `--user-data-dir` (a folder outside the agent state, e.g. `~/.browser-cookbook/chrome`) and a free debug port.
-4. Record the roster in the browser connection's `index.md`: one line per known instance (name, debug port, user-data-dir or "daily profile", what it is for, logged-in sites as they accumulate) and which one is DEFAULT. Every run attaches to the default unless the user names another instance for that run; a recipe may pin an instance in its own index.md.
+
+   The binary for a dedicated instance depends on the OS:
+   - macOS: use Chrome Beta when it is installed (a separate app bundle, so Dock and Raycast clicks do not land in the automation window). When Beta is absent, plain Chrome with its own `--user-data-dir` works; do not require an install.
+   - Linux and Windows: plain Chrome with its own `--user-data-dir`. On Windows the taskbar behavior is unverified; watch for the same hijack symptom (clicks on the pinned icon landing in the automation window) and note it in the roster if it appears.
+3. If the user picks a new dedicated instance, create it yourself with one ad-hoc script; the user picks nothing manually. The script: choose the binary per the OS rule above, create the `--user-data-dir` (a folder outside the agent state, e.g. `~/.browser-cookbook/chrome`), find a free debug port, launch the browser detached and headed (never headless; blockers need a visible window), poll `GET /json/version` on the port until it answers, then report name, port, data dir, binary, and Chrome version.
+4. Record the roster in the browser connection's `index.md`: one line per known instance (name, debug port, user-data-dir or "daily profile", binary or bundle, what it is for, logged-in sites as they accumulate) and which one is DEFAULT. Every run attaches to the default unless the user names another instance for that run; a recipe may pin an instance in its own index.md.
 
 ## 2. Verify the connection
 
@@ -31,7 +35,21 @@ Never ask the user about environment state a probe can answer; check it, and fix
 
 Tell the user, in plain words: the agent keeps notes per site in `sites/` and saved recipes in `recipes/`; both start empty and fill through use. Point at the example run as a sample.
 
-One client tip: register this MCP server under a short alias (for example `bc`); commands then read `/mcp__bc__browse`. Command names are short (no module prefix, except names the framework reserves, like this setup command, which keeps the module prefix), so with a short alias every daily command, including per-recipe ones, stays easy to find in the picker. In Claude Code: `claude mcp remove <long-name>` then `claude mcp add <short-name> --transport http <url>`.
+## 4. Finish
+
+Print this template verbatim as the last message, with the alias derived per `style.md` and the real instance name, Chrome version, and port filled in. Nothing after it.
+
+```
+Setup complete. Default instance: <name> (Chrome <version>, port <port>).
+
+Commands, in the order to try them:
+1. /mcp__<alias>__browse - one-off browser task. Try: /mcp__<alias>__browse task: check my starred GitHub repos
+2. /mcp__<alias>__new_recipe - do a task and save it as a reusable recipe. Try it when a task repeats.
+3. /mcp__<alias>__save_recipe - promote the last browse run into a recipe, no re-exploration.
+4. /mcp__<alias>__run_recipe - run a saved recipe by name (each saved recipe also gets its own /mcp__<alias>__recipe_<name> command).
+
+Start with 1.
+```
 
 ## What setup creates
 
