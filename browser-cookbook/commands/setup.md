@@ -19,7 +19,7 @@ The agent drives Chrome over a debug port. A machine can run several Chrome inst
    - macOS: use Chrome Beta when it is installed (a separate app bundle, so Dock and Raycast clicks do not land in the automation window). When Beta is absent, plain Chrome with its own `--user-data-dir` works; do not require an install.
    - Linux and Windows: plain Chrome with its own `--user-data-dir`. On Windows the taskbar behavior is unverified; watch for the same hijack symptom (clicks on the pinned icon landing in the automation window) and note it in the roster if it appears.
 3. If the user picks a new dedicated instance, create it yourself with one ad-hoc script; the user picks nothing manually. The script: choose the binary per the OS rule above, create the `--user-data-dir` (a folder outside the agent state, e.g. `~/.browser-cookbook/chrome`), find a free debug port, launch the browser detached and headed (never headless; blockers need a visible window), poll `GET /json/version` on the port until it answers, then report name, port, data dir, binary, and Chrome version.
-4. Record the roster in the browser connection's `index.md`: one line per known instance (name, debug port, user-data-dir or "daily profile", binary or bundle, what it is for, logged-in sites as they accumulate) and which one is DEFAULT. Every run attaches to the default unless the user names another instance for that run; a recipe may pin an instance in its own index.md.
+4. Record the roster in the browser connection's `roster.md`: one line per known instance (name, debug port, user-data-dir or "daily profile") and which one is DEFAULT. Add a `roster.md` line to the connection's `index.md`. Every run attaches to the default unless the user names another instance for that run; a recipe may pin an instance in its own index.md.
 
 ## 2. Verify the connection
 
@@ -29,7 +29,7 @@ Never ask the user about environment state a probe can answer; check it, and fix
 2. If the probe fails, start or restart that instance yourself with its recorded flags. Say one line first: "Restarting Chrome with the debug port; your tabs restore." For the daily profile: quit Chrome gracefully first (macOS: `osascript -e 'tell application "Google Chrome" to quit'`), wait until the process is gone, then start detached with `open -a "Google Chrome" --args --remote-debugging-port=<port>` (plus the recorded `--user-data-dir` for a dedicated instance). Probe again.
 3. Only if that restart fails, or the platform is not macOS, give the user the one exact command to run.
 4. Smoke-test the attachment with an ad-hoc script: connect Playwright over CDP to the recorded port, read the title of the active tab, and report it. Read the browser connection's `index.md` for the exact snippet.
-5. If Playwright is missing from the connection deps, add it to the connection's `connection.yaml`. Then tell the user: "Restart the server (stop, `gcontext up`), then reconnect in your client (`/mcp` in Claude Code)."
+5. If Playwright is missing from the connection deps, add `playwright` to the connection's `connection.yaml` under `deps:` (ask the user first; that file is human-edited). Then rerun the smoke test: the first exec call after the change installs the dep. No server restart is needed.
 
 ## 3. Explain the knowledge layout
 
