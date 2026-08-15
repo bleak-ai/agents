@@ -29,7 +29,7 @@ Never ask the user about environment state a probe can answer; check it, and fix
 2. If the probe fails, start or restart that instance yourself with its recorded flags. Say one line first: "Restarting Chrome with the debug port; your tabs restore." For the daily profile: quit Chrome gracefully first (macOS: `osascript -e 'tell application "Google Chrome" to quit'`), wait until the process is gone, then start detached with `open -a "Google Chrome" --args --remote-debugging-port=<port>` (plus the recorded `--user-data-dir` for a dedicated instance). Probe again.
 3. Only if that restart fails, or the platform is not macOS, give the user the one exact command to run.
 4. Smoke-test the attachment with an ad-hoc script: connect Playwright over CDP to the recorded port, read the title of the active tab, and report it. Read the browser connection's `index.md` for the exact snippet.
-5. If Playwright is missing from the connection deps, add `playwright` to the connection's `connection.yaml` under `deps:` (ask the user first; that file is human-edited). Then rerun the smoke test: the first exec call after the change installs the dep. No server restart is needed.
+5. If Playwright is missing from the connection deps, add `playwright` to the connection's `connection.yaml` under `deps:` (ask the user first; that file is human-edited). Then rerun the smoke test: the first run_adhoc_script or run_script call after the change installs the dep. No server restart is needed.
 
 ## 3. Explain the knowledge layout
 
