@@ -7,10 +7,6 @@ description: >
   repetitive tasks into plain Python scripts; on later runs the AI only
   dispatches the script and heals failures. Broken
   knowledge heals itself; blockers like captchas escalate to you.
-parameters:
-  - name: task
-    description: What to do, in plain words (e.g. "export this month's invoices from the billing dashboard")
-    required: true
 flow:
   - Describe a browser task in plain words
   - The agent reuses a saved recipe when one matches
