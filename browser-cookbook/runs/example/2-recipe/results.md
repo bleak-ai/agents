@@ -11,8 +11,21 @@ Script:
 ```python
 import argparse
 import pathlib
+import re
 
 from playwright.sync_api import sync_playwright
+
+
+def cdp_port_from_roster():
+    """Read the default instance's CDP port from the browser connection roster."""
+    roster = pathlib.Path(__file__).resolve().parents[3] / "connections" / "browser" / "roster.md"
+    # roster.md lines: | name | port | profile path | ... with DEFAULT marked
+    for line in roster.read_text().splitlines():
+        if "DEFAULT" in line:
+            match = re.search(r"\b(\d{4,5})\b", line)
+            if match:
+                return int(match.group(1))
+    raise RuntimeError("No DEFAULT instance found in roster.md")
 
 
 def main():
@@ -20,8 +33,9 @@ def main():
     parser.add_argument("out", nargs="?", default="contacts.csv", help="Path for the CSV")
     args = parser.parse_args()
 
+    port = cdp_port_from_roster()
     with sync_playwright() as pw:
-        browser = pw.chromium.connect_over_cdp("http://127.0.0.1:9222")
+        browser = pw.chromium.connect_over_cdp(f"http://127.0.0.1:{port}")
         page = browser.contexts[0].pages[0]
         page.goto("https://app.acme-crm.test/contacts")
 

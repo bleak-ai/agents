@@ -37,6 +37,7 @@ def load_site_lib(domain):
     return mod
 ```
 
+- The CDP port is not a constant. Read it from the browser connection's `roster.md` at run time (parse the DEFAULT line for the port number). Never hardcode `9222` or any other port in a script.
 - Extract a `blocks/*.md` fragment or a lib.py helper when a SECOND recipe needs the same thing, not speculatively.
 
 ## Done when
