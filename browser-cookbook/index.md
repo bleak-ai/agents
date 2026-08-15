@@ -15,9 +15,8 @@ flow:
   - Describe a browser task in plain words
   - The agent reuses a saved recipe when one matches
   - Known sites run warm from accumulated site notes
-  - browse performs without saving a recipe; new_recipe crystallizes one; save_recipe promotes the last browse into a recipe
-  - Every saved recipe is its own slash command; type /recipe in the picker to see them all
-  - Broken recipes diagnose and heal themselves (3 heal attempts, then report)
+  - run_once performs without saving a recipe; run_create_cookbook crystallizes one
+  - Broken recipes diagnose and heal themselves (3 attempts, then report)
 connections:
   - kind: browser
     description: Playwright attached over CDP to a Chrome instance the user chooses (daily profile or a dedicated one; roster with a default recorded in the connection)
@@ -36,17 +35,14 @@ Token economy is a design goal: AI time is spent only where judgment is needed. 
 
 ## Entry points
 
-All messaging follows `style.md`: fixed status lines, prose only at proposal, blocker, result.
-
-- `browse`: do the task, no recipe. Site knowledge still updates.
-- `new_recipe`: do the task and crystallize a recipe (full explore, verdict, save flow).
-- `save_recipe`: promote the most recent browse run into a recipe without re-exploring.
+- `run_once`: do the task, no recipe. Site knowledge still updates.
+- `run_create_cookbook`: do the task and crystallize a recipe (full explore, verdict, save flow).
 - `run_recipe`: execute a saved recipe by name; heals itself on failure.
-- `recipe_<name>`: one slash command per saved recipe, invoked as `/mcp__<alias>__recipe_<name>`; mechanism documented in `recipes/index.md`.
+- `recipe_<name>`: one slash command per saved recipe, generated from the `recipe.md` template (hyphens in the recipe name become underscores). Pick it straight from the client's command picker; same execution and healing as `run_recipe`.
 
 ## The script verdict
 
-After every `new_recipe` exploration the agent writes a verdict into the recipe: script candidate or not, with the reason. The default is yes; NOT scripting must be justified (content-dependent branching, layout instability, anti-bot pressure).
+After every `run_create_cookbook` exploration the agent writes a verdict into the recipe: script candidate or not, with the reason. The default is yes; NOT scripting must be justified (content-dependent branching, layout instability, anti-bot pressure).
 
 ## Blockers
 
@@ -54,4 +50,12 @@ Captcha, unexpected 2FA, strange modal: the agent pauses and asks in the session
 
 ## Run naming
 
-Each run folder is `runs/<YYYY-MM-DD>-<slug>/`, slug decided in step 0. Unpromoted runs older than 7 days are deleted at the start of any command (rule in `style.md`).
+Each run folder is named with a kebab-case slug derived from the task description, decided during step 0 (analyze).
+
+## Contents
+
+- `commands/`: user-invokable entry points (run_once, run_create_cookbook, run_recipe, recipe template, setup).
+- `sites/`: per-site knowledge, one folder per domain, shared by every recipe and run.
+- `recipes/`: one folder per crystallized task, with goal, verdict, and script.
+- `runs/`: one folder per execution, named by task slug.
+- `steps/`: the four-step flow (analyze, explore, propose, test).

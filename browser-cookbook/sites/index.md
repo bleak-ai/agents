@@ -8,6 +8,6 @@ Each site folder contains:
 - `blocks/*.md`: reusable procedure fragments the AI reads (e.g. `login.md`, `search.md`). Created when a second recipe needs the fragment.
 - `lib.py`: Python helpers scripts import (e.g. `login(page)`). One fix here heals every script on the site.
 
-## Index
+## Contents
 
 _(no sites yet; folders appear on first contact)_

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-08-14T20:25:34Z",
+  "generated": "2026-08-15T07:22:04Z",
   "agents": [
     {
       "id": "browser-cookbook",
@@ -11,6 +11,7 @@
       ],
       "files": [
         "commands/browse.md",
+        "commands/index.md",
         "commands/new_recipe.md",
         "commands/recipe.md",
         "commands/run_recipe.md",
@@ -23,6 +24,7 @@
         "runs/example/2-recipe/results.md",
         "runs/example/done/info.md",
         "runs/example/index.md",
+        "runs/index.md",
         "sites/index.md",
         "steps/0-analyze.md",
         "steps/1-explore.md",
