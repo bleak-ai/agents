@@ -33,6 +33,7 @@ Open a PR that adds exactly one new folder.
 Requirements:
 
 - The folder must pass `gcontext share <folder>` validation locally.
+- The folder must contain a `README.md` that describes the agent: what it does, the install command, the connections it needs, and what it learns. The README documents the agent on GitHub; it is not installed into instances.
 - The `runs/` directory must contain only the fabricated example run with invented data (no real names, emails, or credentials).
 - Do not edit `registry.json`. Maintainers regenerate it with the build script in the gcontext repo after merge.
 
