@@ -8,6 +8,12 @@ A browser agent that learns your sites. It performs browser tasks through your r
 gcontext add browser-cookbook
 ```
 
+Then run setup to choose and verify your Chrome instance:
+
+```
+/mcp__<instance>__browser_cookbook__setup
+```
+
 ## How it works
 
 1. Describe a browser task in plain words.
