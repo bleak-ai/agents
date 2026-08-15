@@ -2,6 +2,10 @@
 
 Every command and step follows these rules. They override any default verbosity.
 
+## Module-relative paths
+
+All paths in this module are relative to the module folder. When this module is installed under `modules/`, prefix every path with `modules/browser-cookbook/`. For example: `recipes/index.md` becomes `modules/browser-cookbook/recipes/index.md`. This rule applies to every `read_file`, `write_file`, `run_script`, and `list_dir` call.
+
 ## Status lines
 
 One line per action, format `LABEL: detail`. Fixed vocabulary, nothing else:
@@ -24,11 +28,16 @@ ANALYZING, EXPLORING, BROWSING, TESTING, SAVING, RUNNING, HEALING, BLOCKED, FAIL
 
 ## Printed commands
 
-- Never print a slash command you have not constructed. The server alias is
-  client-side; derive it from your own MCP tool names: the tools are named
-  `mcp__<alias>__read_file` and so on, so the real invocation is
+- Never print a slash command you have not constructed. The alias is the
+  `name` field in `gcontext.yaml` at the state root; read it with
+  `read_file("gcontext.yaml")`. The real invocation is
   `/mcp__<alias>__<command>`.
-- Example: alias `bc` gives `/mcp__bc__save_recipe` and `/mcp__bc__recipe_gmail_check`.
+- Fallback: when your tool names carry a prefix (`mcp__<alias>__read_file`),
+  that prefix is the alias and confirms the value. Behind a proxy client the
+  prefix is absent or rewritten; trust `gcontext.yaml` and tell the user the
+  command may appear under a different prefix in their client's picker.
+- Example: alias `bc` gives `/mcp__bc__save_recipe` and
+  `/mcp__bc__recipe_gmail_check`.
 
 ## Run folders
 

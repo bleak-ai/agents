@@ -15,7 +15,7 @@ flow:
   - Describe a browser task in plain words
   - The agent reuses a saved recipe when one matches
   - Known sites run warm from accumulated site notes
-  - run_once performs without saving a recipe; run_create_cookbook crystallizes one
+  - browse performs without saving a recipe; new_recipe crystallizes one
   - Broken recipes diagnose and heal themselves (3 attempts, then report)
 connections:
   - kind: browser
@@ -29,20 +29,23 @@ learns: >
   default outcome and skipping it needs a written justification.
 ---
 
+All paths in commands and steps are relative to this module folder. After `gcontext add`, prefix each path with `modules/browser-cookbook/` (see `style.md` for the full rule).
+
 Turn browser work into accumulated knowledge. The agent drives your real Chrome (your logins persist), records what it learns about each site, and turns repetitive tasks into parameterized Python scripts that replay in seconds; the AI only launches the script and steps in when it breaks.
 
 Token economy is a design goal: AI time is spent only where judgment is needed. Deterministic parts (login, navigation, extraction) live in per-site Python helpers even when the task itself stays AI-driven.
 
 ## Entry points
 
-- `run_once`: do the task, no recipe. Site knowledge still updates.
-- `run_create_cookbook`: do the task and crystallize a recipe (full explore, verdict, save flow).
+- `browse`: do the task, no recipe. Site knowledge still updates.
+- `new_recipe`: do the task and crystallize a recipe (full explore, verdict, save flow).
+- `save_recipe`: promote the last browse run into a recipe, no re-exploration.
 - `run_recipe`: execute a saved recipe by name; heals itself on failure.
 - `recipe_<name>`: one slash command per saved recipe, generated from the `recipe.md` template (hyphens in the recipe name become underscores). Pick it straight from the client's command picker; same execution and healing as `run_recipe`.
 
 ## The script verdict
 
-After every `run_create_cookbook` exploration the agent writes a verdict into the recipe: script candidate or not, with the reason. The default is yes; NOT scripting must be justified (content-dependent branching, layout instability, anti-bot pressure).
+After every `new_recipe` exploration the agent writes a verdict into the recipe: script candidate or not, with the reason. The default is yes; NOT scripting must be justified (content-dependent branching, layout instability, anti-bot pressure). The verdict includes an anchoring block that names each element anchor and its strategy (text-label, aria-role, stable-id, or css-class) with an overall durability rating. On success, a per-site `selftest.py` is written or updated to assert every recorded anchor still resolves.
 
 ## Blockers
 
@@ -54,7 +57,7 @@ Each run folder is named with a kebab-case slug derived from the task descriptio
 
 ## Contents
 
-- `commands/`: user-invokable entry points (run_once, run_create_cookbook, run_recipe, recipe template, setup).
+- `commands/`: user-invokable entry points (browse, new_recipe, save_recipe, run_recipe, recipe template, setup).
 - `sites/`: per-site knowledge, one folder per domain, shared by every recipe and run.
 - `recipes/`: one folder per crystallized task, with goal, verdict, and script.
 - `runs/`: one folder per execution, named by task slug.
