@@ -6,6 +6,14 @@ Each recipe is also its own slash command: `commands/recipe.md` is a template (`
 
 Consulted during step 0 (analyze). Step 3 (test) adds entries. `run_recipe` heals broken entries autonomously (3 attempts, then report).
 
+## Index format
+
+Each entry follows this format:
+
+```
+- <name>: <description> (script|playbook, read-only|mutating, site: <domain>)
+```
+
 ## Contents
 
-_(no recipes yet; they are created by run_create_cookbook)_
+_(no recipes yet; they are created by new_recipe)_
