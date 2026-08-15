@@ -55,5 +55,7 @@ ANALYZING, EXPLORING, BROWSING, TESTING, SAVING, RUNNING, HEALING, BLOCKED, FAIL
 
 On a blocker (captcha, unexpected 2FA, unexpected wall): print BLOCKED with
 what is needed, ask through the question tool (solved, continue / abort), and
-message the notification connection if one exists. The user acts in the
-visible Chrome window; verify the page state, then continue.
+message the notification connection if one exists. A notification connection
+is any `connections/<name>/` with kind `notification-sink` in its
+`connection.yaml`. The user acts in the visible Chrome window; verify the
+page state, then continue.
