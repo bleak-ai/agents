@@ -58,3 +58,4 @@ Each run folder is named with a kebab-case slug derived from the task descriptio
 - `recipes/`: one folder per crystallized task, with goal, verdict, and script.
 - `runs/`: one folder per execution, named by task slug.
 - `steps/`: the four-step flow (analyze, explore, propose, test).
+- `style.md`: the message regime every command follows.
