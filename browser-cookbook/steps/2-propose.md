@@ -14,6 +14,7 @@ The exploration log from step 1; the site notes.
 
 - **Recipe name**: kebab-case.
 - **Script verdict**: `script: yes` or `script: no`, followed by the reason. The default is yes. A no must name the concrete obstacle: content-dependent branching, unstable layout, anti-bot pressure. This verdict is copied into the recipe's index.md in step 3.
+- **Anchoring**: for each element the script touches, list the anchor and its strategy (`text-label`, `aria-role`, `stable-id`, or `css-class`). Add one durability line: `high` when all anchors are stable types (text-label, aria-role, stable-id), `low` when any anchor is css-class, with the expected failure mode. Convention: prefer text-label and aria-role anchors over generated class names. Use css-class only when no stable alternative exists.
 - **Parameters**: name, type, description, default for each. Give a default whenever a sensible standing value exists; a default makes the recipe's slash command runnable with zero typing.
 - **Read-only or mutating**: from step 0, confirmed against what exploration showed.
 - For `script: yes` - **Script**: full Python source. For `script: no` - **Playbook**: the ordered instructions the AI follows on future runs, referencing site blocks, plus which deterministic stretches go into `lib.py`.
@@ -21,7 +22,7 @@ The exploration log from step 1; the site notes.
 
 ## Script conventions
 
-- Parameters via argparse, matching the parameter list exactly.
+- Parameters as positional arguments, in frontmatter order, each with `nargs='?'` and the declared default.
 - The last thing a script does is assert the success definition. "No exception" is not success.
 - Shared site logic goes into `sites/<domain>/lib.py`, not into the script. Because domain folders contain dots, load lib.py with this helper (put it in the script as-is):
 

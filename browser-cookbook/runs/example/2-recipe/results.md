@@ -2,7 +2,7 @@
 
 - **Recipe name**: export-contact-list
 - **Script verdict**: script: yes. Fixed navigation, stable data-testid selectors, verifiable outcome (the CSV file). No content-dependent branching.
-- **Parameters**: `--out` (str, path for the CSV, default `contacts.csv`).
+- **Parameters**: `out` (str, path for the CSV, default `contacts.csv`).
 - **Read-only or mutating**: read-only.
 - **Test plan**: run with defaults; expect the CSV to exist with a header row.
 
@@ -17,7 +17,7 @@ from playwright.sync_api import sync_playwright
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--out", default="contacts.csv", help="Path for the CSV")
+    parser.add_argument("out", nargs="?", default="contacts.csv", help="Path for the CSV")
     args = parser.parse_args()
 
     with sync_playwright() as pw:
