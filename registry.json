@@ -1,5 +1,5 @@
 {
-  "generated": "2026-08-15T07:50:50Z",
+  "generated": "2026-08-16T07:43:27Z",
   "agents": [
     {
       "id": "browser-cookbook",
@@ -35,90 +35,49 @@
       ]
     },
     {
-      "id": "release-ops",
-      "name": "Release Ops",
-      "description": "A release agent that collects changes, drafts a changelog, bumps the version, publishes, and optionally announces. Each release is a searchable run; the agent learns your changelog style and known blockers over time.\n",
+      "id": "post-crafter",
+      "name": "Post Crafter",
+      "description": "A marketing post agent that puts the headline first. Each post starts from a chosen angle, then a headline workshop generates candidates from proven persuasion formulas (Cialdini, Kahneman, Caples), scores them, red-teams the best, and lets the user pick or rewrite. The body follows in two layers: a System 1 hook to stop the scroll, then System 2 proof to close the deal. The user controls every content decision. Product knowledge accumulates in a shared products/ folder so repeat runs stop re-asking.\n",
       "tags": [
-        "release",
-        "ops",
-        "devtools"
+        "marketing",
+        "content",
+        "copywriting"
       ],
       "files": [
-        "commands/run.md",
+        "commands/craft.md",
+        "commands/index.md",
         "commands/setup.md",
+        "formulas/authority.md",
+        "formulas/contrast-alternative.md",
+        "formulas/counterintuitive.md",
+        "formulas/curiosity-gap.md",
+        "formulas/how-to.md",
+        "formulas/loss-aversion.md",
+        "formulas/number-anchor.md",
+        "formulas/question.md",
+        "formulas/reciprocity.md",
+        "formulas/scarcity.md",
+        "formulas/social-proof.md",
+        "formulas/story.md",
+        "formulas/transformation.md",
+        "formulas/unity-identity.md",
         "index.md",
-        "runs/example/0-parameters.md",
-        "runs/example/1-collect/results.md",
-        "runs/example/2-changelog/results.md",
-        "runs/example/3-bump/results.md",
-        "runs/example/4-publish/results.md",
+        "runs/example/0-intake/results.md",
+        "runs/example/1-angle/results.md",
+        "runs/example/2-headline/results.md",
+        "runs/example/3-body/results.md",
+        "runs/example/4-assemble/results.md",
         "runs/example/done/info.md",
         "runs/example/index.md",
-        "steps/0-preflight.md",
-        "steps/1-collect.md",
-        "steps/2-changelog.md",
-        "steps/3-bump.md",
-        "steps/4-publish.md",
-        "steps/5-announce.md",
-        "steps/5-verify-deploy.md",
-        "steps/6-announce.md",
-        "steps/index.md"
-      ]
-    },
-    {
-      "id": "seo-pipeline",
-      "name": "SEO Content Pipeline",
-      "description": "Research keywords, discover content opportunities, and build a prioritized list of content ideas. Each run explores a seed topic and produces actionable suggestions, not finished articles.\n",
-      "tags": [
-        "seo",
-        "content"
-      ],
-      "files": [
-        "commands/setup.md",
-        "index.md",
-        "insights/index.md",
-        "runs/example/0-research/results.md",
-        "runs/example/1-clusters/results.md",
-        "runs/example/2-evaluation/results.md",
-        "runs/example/3-suggestions/results.md",
-        "runs/example/done/info.md",
-        "runs/example/index.md",
-        "steps/0-research.md",
-        "steps/1-cluster.md",
-        "steps/2-evaluate.md",
-        "steps/3-suggest.md",
-        "steps/index.md"
-      ]
-    },
-    {
-      "id": "support-ops",
-      "name": "Support Ops",
-      "description": "A support agent that resolves tickets, logs every action, and builds playbooks from experience. Each resolved ticket becomes a searchable record; repeated patterns become reusable playbooks the agent consults on future tickets.\n",
-      "tags": [
-        "support",
-        "ops"
-      ],
-      "files": [
-        "commands/setup.md",
-        "commands/support-task.md",
-        "index.md",
-        "playbooks/_index.md",
-        "playbooks/example-export-member-list.md",
-        "playbooks/example-swap-subscription.md",
-        "runs/example/0-parameters.md",
-        "runs/example/1-intake/results.md",
-        "runs/example/2-plan/results.md",
-        "runs/example/3-execution-log/results.md",
-        "runs/example/4-outcome/results.md",
-        "runs/example/done/info.md",
-        "runs/example/index.md",
+        "runs/index.md",
         "steps/0-intake.md",
-        "steps/1-plan.md",
-        "steps/2-execute.md",
-        "steps/3-log.md",
-        "steps/4-learn.md",
-        "steps/5-close.md",
-        "steps/index.md"
+        "steps/1-angle.md",
+        "steps/2-headline.md",
+        "steps/3-body.md",
+        "steps/4-assemble.md",
+        "steps/index.md",
+        "style.md",
+        "voice.md"
       ]
     }
   ]

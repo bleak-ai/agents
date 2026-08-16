@@ -4,4 +4,4 @@ One folder per execution, named `<YYYY-MM-DD>-<slug>/` from the task description
 
 ## Contents
 
-- `example/`: fabricated sample of a full run_create_cookbook flow on an invented site.
+- `example/`: fabricated sample of a full new_recipe flow on an invented site.
