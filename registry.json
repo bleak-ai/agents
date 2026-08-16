@@ -1,4 +1,5 @@
 {
+  "version": "0.1.0",
   "generated": "2026-08-16T07:43:27Z",
   "agents": [
     {
@@ -30,6 +31,49 @@
         "steps/1-explore.md",
         "steps/2-propose.md",
         "steps/3-test.md",
+        "steps/index.md",
+        "style.md"
+      ]
+    },
+    {
+      "id": "diagram-crafter",
+      "name": "Diagram Crafter",
+      "description": "A diagram agent that turns an initial text into a polished explanatory visual, hand-crafted as SVG. It scopes the single claim the diagram must make, proposes 2-3 ASCII wireframe compositions built from proven archetypes, and expands the chosen one using a written design system so results stay consistent across runs. The user decides composition; the design system decides style. Finished diagrams accumulate in a library the agent consults on later runs.\n",
+      "tags": [
+        "diagrams",
+        "visuals",
+        "communication"
+      ],
+      "files": [
+        "archetypes/before-after.md",
+        "archetypes/concept-hero.md",
+        "archetypes/cycle-loop.md",
+        "archetypes/index.md",
+        "archetypes/layered-stack.md",
+        "archetypes/pipeline-flow.md",
+        "archetypes/timeline.md",
+        "commands/craft.md",
+        "commands/index.md",
+        "commands/setup.md",
+        "design/icons.md",
+        "design/index.md",
+        "design/layout.md",
+        "design/palette.md",
+        "design/typography.md",
+        "diagrams/gcontext-architecture.svg",
+        "diagrams/index.md",
+        "index.md",
+        "README.md",
+        "runs/example/0-intake/results.md",
+        "runs/example/1-wireframe/results.md",
+        "runs/example/done/info.md",
+        "runs/example/index.md",
+        "scripts/render.py",
+        "steps/0-intake.md",
+        "steps/1-wireframe.md",
+        "steps/2-draft.md",
+        "steps/3-review.md",
+        "steps/4-save.md",
         "steps/index.md",
         "style.md"
       ]
